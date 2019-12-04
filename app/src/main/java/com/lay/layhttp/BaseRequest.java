@@ -1,7 +1,9 @@
-package com.lay.http;
+package com.lay.layhttp;
 
 import android.os.Handler;
 import android.text.TextUtils;
+
+import com.lay.http.Intercetor;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -17,7 +19,6 @@ public abstract class BaseRequest {
     public static String TOKEN = "";
     private static Handler H = new Handler();
     protected List<Intercetor> intercetorList = new ArrayList<>();
-
 
     @Parameter
     public String token = "";
@@ -44,7 +45,7 @@ public abstract class BaseRequest {
         send();
     }
 
-    public BaseRequest addIntercetor(Intercetor intercetor){
+    public BaseRequest addChain(Intercetor intercetor){
         intercetorList.add(intercetor);
         return this;
     }
